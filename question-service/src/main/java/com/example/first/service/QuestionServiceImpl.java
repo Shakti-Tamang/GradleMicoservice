@@ -7,6 +7,9 @@ import org.springframework.stereotype.Service;
 
 import com.example.first.model.Question;
 import com.example.first.repo.QuestionRepo;
+
+import com.example.first.dto.CorrectAnswerDto;
+
 @Service
 public class QuestionServiceImpl  implements QuestionService{
 
@@ -27,4 +30,18 @@ public class QuestionServiceImpl  implements QuestionService{
         return questions.isEmpty() ? null : questions;
     }
 
+    @Override
+    public Integer getScore(List<CorrectAnswerDto> ids) {
+        int score=0;
+        for(CorrectAnswerDto dto : ids ) {
+     Question question=questionRepo.findById(dto.getId()).orElse(null);
+     if(question.getRightAnswer().equalsIgnoreCase(dto.getSelectedAnswer())) {
+         score++;
+        }
+    }
+
+
+    return score;
+
+}
 }
