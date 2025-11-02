@@ -22,7 +22,6 @@ public class QuestionServiceImpl  implements QuestionService{
         questionRepo.save(question);
 
     }
-
     @Override
     public List<Question> getQuestionsByQuizId() {
 
@@ -39,8 +38,6 @@ public class QuestionServiceImpl  implements QuestionService{
          score++;
         }
     }
-
     return score;
-
 }
 }
