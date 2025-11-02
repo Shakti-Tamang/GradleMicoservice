@@ -35,15 +35,11 @@ public class QuestionController {
     } 
 
     @GetMapping("/lists")
-
      public ResponseEntity<ApiResponse> saveQuestion() {
       List<Question> list= questionService.getQuestionsByQuizId();
 
         ApiResponse apiResponse =ApiResponse.<Question>builder().message("Question lists").listData(list).status_code(HttpStatus.OK.value()).build();
         return ResponseEntity.status(HttpStatus.OK).body(apiResponse); 
     } 
-
-    
-
 
 }
