@@ -34,4 +34,8 @@ public class ApiResponse <T>{
     @JsonProperty("listData")
     private List<T>  listData;
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonProperty("score")
+    private Integer score;
+
 }

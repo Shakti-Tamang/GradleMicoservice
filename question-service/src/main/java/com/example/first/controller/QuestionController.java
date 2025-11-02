@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import com.example.first.apiresponse.ApiResponse;
+import com.example.first.dto.CorrectAnswerDto;
 import com.example.first.model.Question;
 import com.example.first.service.QuestionService;
 
@@ -41,7 +42,10 @@ public class QuestionController {
         return ResponseEntity.status(HttpStatus.OK).body(apiResponse); 
     } 
 
-
-    
-
+      @GetMapping("/getScore")
+     public ResponseEntity<ApiResponse> saveQuestion(@RequestBody List<CorrectAnswerDto> correct) {
+      Integer scores= questionService.getScore(correct);
+        ApiResponse apiResponse=ApiResponse.builder().message("Question lists").score(scores).status_code(HttpStatus.OK.value()).build();
+        return ResponseEntity.status(HttpStatus.OK).body(apiResponse); 
+    } 
 }
