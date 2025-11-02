@@ -40,7 +40,6 @@ public class QuestionServiceImpl  implements QuestionService{
         }
     }
 
-
     return score;
 
 }
