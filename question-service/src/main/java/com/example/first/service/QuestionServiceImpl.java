@@ -1,5 +1,7 @@
 package com.example.first.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,13 @@ public class QuestionServiceImpl  implements QuestionService{
 
         questionRepo.save(question);
 
+    }
+
+    @Override
+    public List<Question> getQuestionsByQuizId() {
+
+        List<Question> questions = questionRepo.findAll();
+        return questions.isEmpty() ? null : questions;
     }
 
 }
